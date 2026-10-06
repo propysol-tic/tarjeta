@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tarjeta digital de Gregorio Dolores Leal - Propysol SA de CV">
+  <meta name="theme-color" content="#0b3d2e">
+  <title>Gregorio Dolores Leal | Propysol</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #eaf3ef, #f7f7f7);
+      color: #17352b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,.15);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #073b2b, #0b6b48);
+      color: white;
+      padding: 28px 24px 24px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 260px;
+      max-width: 90%;
+      height: auto;
+      background: white;
+      border-radius: 12px;
+      padding: 8px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 4px 0 8px;
+      font-size: 28px;
+      line-height: 1.15;
+    }
+
+    .role {
+      margin: 0;
+      font-size: 16px;
+      opacity: .92;
+    }
+
+    .company {
+      margin-top: 8px;
+      font-size: 14px;
+      opacity: .82;
+    }
+
+    .content {
+      padding: 24px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #e9eceb;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .item:last-child { border-bottom: 0; }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #0b6b48;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      flex: 0 0 44px;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #6b7772;
+      margin-bottom: 3px;
+    }
+
+    .value {
+      font-size: 16px;
+      word-break: break-word;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    button, .button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .primary {
+      background: #0b6b48;
+      color: white;
+    }
+
+    .secondary {
+      background: #eaf3ef;
+      color: #0b6b48;
+    }
+
+    .qr-section {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid #e9eceb;
+    }
+
+    #qrcode {
+      display: inline-block;
+      padding: 12px;
+      background: white;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .qr-help {
+      font-size: 13px;
+      color: #69736f;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 0 24px 24px;
+      color: #7a8580;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <header class="header">
+      <img class="logo" src="logo320px-2026.jpg" alt="Propysol SA de CV">
+      <h1>Gregorio Dolores Leal</h1>
+      <p class="role">Coordinador de operaciones en planta</p>
+      <p class="company">Propysol SA de CV</p>
+    </header>
+
+    <section class="content">
+      <a class="item" href="tel:+525512345678">
+        <div class="icon">☎</div>
+        <div>
+          <div class="label">Teléfono</div>
+          <div class="value">55 1234 5678</div>
+        </div>
+      </a>
+
+      <a class="item" href="mailto:gdolores@propysol.com.mx">
+        <div class="icon">✉</div>
+        <div>
+          <div class="label">Correo electrónico</div>
+          <div class="value">gdolores@propysol.com.mx</div>
+        </div>
+      </a>
+
+      <a class="item" href="https://propysol.com.mx" target="_blank" rel="noopener">
+        <div class="icon">🌐</div>
+        <div>
+          <div class="label">Sitio web</div>
+          <div class="value">propysol.com.mx</div>
+        </div>
+      </a>
+
+      <div class="actions">
+        <button class="button primary" onclick="guardarContacto()">📇 Guardar contacto</button>
+        <a class="button secondary"
+           href="https://wa.me/525512345678"
+           target="_blank" rel="noopener">💬 Contactar por WhatsApp</a>
+        <button class="button secondary" onclick="compartir()">📤 Compartir tarjeta</button>
+      </div>
+
+      <div class="qr-section">
+        <strong>Escanea para abrir mi tarjeta</strong>
+        <div id="qrcode"></div>
+        <div class="qr-help">Puedes guardar este código QR para compartir tus datos.</div>
+      </div>
+    </section>
+
+    <footer>
+      Propysol SA de CV · Tarjeta de presentación digital
+    </footer>
+  </main>
+
+  <!-- Generación del QR en el navegador -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: window.location.href,
+      width: 180,
+      height: 180
+    });
+
+    function guardarContacto() {
+      const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+N:Leal;Gregorio Dolores;;;
+FN:Gregorio Dolores Leal
+ORG:Propysol SA de CV
+TITLE:Coordinador de operaciones en planta
+TEL;TYPE=CELL:+525512345678
+EMAIL;TYPE=WORK:gdolores@propysol.com.mx
+URL:https://propysol.com.mx
+END:VCARD`;
+
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Gregorio-Dolores-Leal.vcf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    async function compartir() {
+      const data = {
+        title: "Gregorio Dolores Leal",
+        text: "Tarjeta de presentación digital - Propysol SA de CV",
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(data);
+        } catch (e) {}
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Enlace de la tarjeta copiado al portapapeles.");
+      }
+    }
+  </script>
+</body>
+</html>
